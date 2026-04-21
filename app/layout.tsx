@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dr. Raina's Dental Care & Implants",
-  description: "Dummy website for Dr. Raina's Dental Care & Implants.",
+  title: "Dr. Raina Dental Center",
+  description: "Modern dental website for Dr. Raina Dental Center.",
 };
 
 export default function RootLayout({
