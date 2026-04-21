@@ -1,7 +1,7 @@
 import type { HomePageContent } from "@/features/home/types";
 
 export const homePageContent: HomePageContent = {
-  clinicName: "Dr. Raina Dental Center",
+  clinicName: "Dr. Raina Dental Care & Implant",
   tagline: "Our website is getting refurbished",
   description:
     "Thank you for your patience. We are currently refreshing our website. For appointments and queries, please contact the clinic directly.",
