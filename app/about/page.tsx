@@ -1,10 +1,12 @@
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
+import { TopBar } from "@/components/layout/top-bar";
 import { dentalThemeVars } from "@/constants/theme";
 
 export default function AboutPage() {
   return (
     <>
+      <TopBar />
       <Navbar />
       <main className="flex-1 bg-[var(--color-bg)] px-6 py-12" style={dentalThemeVars}>
         <section className="mx-auto w-full max-w-4xl rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 md:p-10">

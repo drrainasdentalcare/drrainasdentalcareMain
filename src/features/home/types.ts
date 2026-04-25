@@ -1,6 +1,7 @@
 export type NavItem = {
   label: string;
   href: string;
+  children?: NavItem[];
 };
 
 export type ContactHighlight = {
@@ -13,6 +14,11 @@ export type ServiceCard = {
   description: string;
 };
 
+export type SocialLink = {
+  label: string;
+  href: string;
+};
+
 export type HomePageContent = {
   clinicName: string;
   tagline: string;
@@ -23,5 +29,6 @@ export type HomePageContent = {
   highlights: ContactHighlight[];
   addressLines: string[];
   phoneNumbers: string[];
+  socialLinks: SocialLink[];
   services: ServiceCard[];
 };
