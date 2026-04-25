@@ -41,7 +41,11 @@ const gallerySectionQuery = groq`
 export async function getGallerySection(): Promise<SanityGallerySection | null> {
   if (!sanityClient) return null;
   try {
-    const result = await sanityClient.fetch<SanityGallerySection | null>(gallerySectionQuery);
+    const result = await sanityClient.fetch<SanityGallerySection | null>(
+      gallerySectionQuery,
+      {},
+      { next: { revalidate: 30 } },
+    );
     return result;
   } catch {
     return null;

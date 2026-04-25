@@ -10,6 +10,7 @@ export const sanityClient =
         projectId,
         dataset,
         apiVersion,
-        useCdn: true,
+        // Use live API so newly published content appears quickly.
+        useCdn: false,
       })
     : null;

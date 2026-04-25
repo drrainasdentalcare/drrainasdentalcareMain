@@ -20,7 +20,11 @@ const testimonialsSectionQuery = groq`
 export async function getTestimonialsSection(): Promise<SanityTestimonialsSection | null> {
   if (!sanityClient) return null;
   try {
-    const result = await sanityClient.fetch<SanityTestimonialsSection | null>(testimonialsSectionQuery);
+    const result = await sanityClient.fetch<SanityTestimonialsSection | null>(
+      testimonialsSectionQuery,
+      {},
+      { next: { revalidate: 30 } },
+    );
     return result;
   } catch {
     return null;
