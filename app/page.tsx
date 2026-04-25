@@ -1,27 +1,35 @@
 import { dentalThemeVars } from "@/constants/theme";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
+import { TopBar } from "@/components/layout/top-bar";
 import { AboutPreviewSection } from "@/components/sections/about";
 import { HeroSection } from "@/components/sections/hero";
+import { ConsultationCtaSection } from "@/components/sections/consultation-cta";
+import { OurSpecialistsSection } from "@/components/sections/our-specialists";
+import { PhotoGallerySection } from "@/components/sections/photo-gallery";
 import { ServicesSection } from "@/components/sections/services";
+import { TestimonialsSection } from "@/components/sections/testimonials";
+import { WhyChooseUsSection } from "@/components/sections/why-choose-us";
+import { getGallerySection } from "@/src/sanity/queries/gallery";
+import { getTestimonialsSection } from "@/src/sanity/queries/testimonials";
 
-export default function Home() {
+export default async function Home() {
+  const gallerySection = await getGallerySection();
+  const testimonialsSection = await getTestimonialsSection();
+
   return (
     <>
+      <TopBar />
       <Navbar />
-      <main
-        className="flex min-h-full flex-1 bg-[var(--color-bg)] px-6 py-10 md:py-14"
-        style={dentalThemeVars}
-      >
-        <section className="mx-auto grid w-full max-w-6xl gap-6 md:grid-cols-12">
-          <div className="space-y-6 md:col-span-8">
-            <HeroSection />
-            <ServicesSection />
-          </div>
-          <div className="md:col-span-4">
-            <AboutPreviewSection />
-          </div>
-        </section>
+      <main className="flex min-h-full flex-1 flex-col bg-[var(--color-bg)]" style={dentalThemeVars}>
+        <HeroSection />
+        <AboutPreviewSection />
+        <ServicesSection />
+        <WhyChooseUsSection />
+        <OurSpecialistsSection />
+        <PhotoGallerySection cmsData={gallerySection} />
+        <TestimonialsSection cmsData={testimonialsSection} />
+        <ConsultationCtaSection />
       </main>
       <Footer />
     </>
