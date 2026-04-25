@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 export const gallerySectionType = defineType({
   name: "gallerySection",
@@ -46,7 +46,7 @@ export const gallerySectionType = defineType({
       title: "Clinic Images",
       type: "array",
       of: [
-        defineField({
+        defineArrayMember({
           title: "Clinic Image",
           type: "image",
           options: { hotspot: true },
@@ -77,7 +77,7 @@ export const gallerySectionType = defineType({
       title: "Event Images",
       type: "array",
       of: [
-        defineField({
+        defineArrayMember({
           title: "Event Image",
           type: "image",
           options: { hotspot: true },
