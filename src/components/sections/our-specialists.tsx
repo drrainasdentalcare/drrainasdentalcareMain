@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { dentalThemeVars } from "@/constants/theme";
+import type { SanitySpecialistsSection } from "@/src/sanity/types/specialists";
 
-const specialists = [
+const fallbackSpecialists = [
   {
     name: "Dr. Kapil Raina",
     role: "Founder, Chief Dentist & Implantologist",
@@ -27,9 +28,33 @@ const specialists = [
   },
 ] as const;
 
-export function OurSpecialistsSection() {
+type OurSpecialistsSectionProps = {
+  cmsData?: SanitySpecialistsSection | null;
+};
+
+export function OurSpecialistsSection({ cmsData }: OurSpecialistsSectionProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+
+  const cmsSpecialists =
+    cmsData?.doctors
+      ?.map((doctor) => ({
+        name: doctor.name ?? "",
+        role: doctor.role ?? "",
+        image: doctor.image?.asset?.url ?? "",
+        alt: doctor.image?.alt ?? doctor.name ?? "Specialist",
+      }))
+      .filter((doctor) => doctor.name && doctor.role && doctor.image) ?? [];
+
+  const specialists =
+    cmsSpecialists.length > 0
+      ? cmsSpecialists
+      : fallbackSpecialists.map((doctor) => ({ ...doctor, alt: doctor.name }));
+
+  const heading = cmsData?.title || "Meet the Experts Behind Your Smile";
+  const highlightText = cmsData?.highlightText || "Behind Your Smile";
+  const hasHighlight = Boolean(highlightText) && heading.includes(highlightText);
+  const headingParts = hasHighlight ? heading.split(highlightText) : [heading];
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -57,19 +82,20 @@ export function OurSpecialistsSection() {
         <p className="group text-sm font-semibold tracking-[0.16em] uppercase">
           <span className="relative block h-6 overflow-hidden">
             <span className="block text-[var(--color-accent)] transition-transform duration-300 ease-out group-hover:-translate-y-6">
-              Our Specialists
+              {cmsData?.label || "Our Specialists"}
             </span>
             <span className="absolute inset-x-0 top-6 block text-[var(--color-accent-hover)] transition-transform duration-300 ease-out group-hover:-translate-y-6">
-              Our Specialists
+              {cmsData?.label || "Our Specialists"}
             </span>
           </span>
         </p>
         <h2 className="mt-3 font-heading text-3xl font-semibold text-[var(--color-heading)] md:text-4xl">
-          Meet the Experts {" "}
-          <span className="text-[var(--color-accent)]">Behind Your Smile</span>
+          {headingParts[0]}
+          {hasHighlight ? <span className="text-[var(--color-accent)]">{highlightText}</span> : null}
+          {headingParts[1] || ""}
         </h2>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--color-body)] md:text-base">
-          A team of experienced dental professionals dedicated to your care.
+          {cmsData?.subtitle || "A team of experienced dental professionals dedicated to your care."}
         </p>
 
         <div className="mt-8 grid gap-5 md:mt-10 md:grid-cols-2 lg:grid-cols-4">
@@ -84,7 +110,7 @@ export function OurSpecialistsSection() {
               <div className="relative h-64 w-full overflow-hidden">
                 <Image
                   src={doctor.image}
-                  alt={doctor.name}
+                  alt={doctor.alt}
                   fill
                   className="object-cover object-top"
                   sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 25vw"
