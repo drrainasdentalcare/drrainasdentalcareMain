@@ -65,7 +65,8 @@ export function OurSpecialistsSection() {
           </span>
         </p>
         <h2 className="mt-3 font-heading text-3xl font-semibold text-[var(--color-heading)] md:text-4xl">
-          Meet the Experts Behind Your Smile
+          Meet the Experts {" "}
+          <span className="text-[var(--color-accent)]">Behind Your Smile</span>
         </h2>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--color-body)] md:text-base">
           A team of experienced dental professionals dedicated to your care.

@@ -37,11 +37,25 @@ export function TestimonialsSection({ cmsData }: TestimonialsSectionProps) {
       style={dentalThemeVars}
     >
       <div className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-10">
-        <p className="text-sm font-semibold tracking-[0.16em] text-[var(--color-accent)] uppercase">
-          {cmsData?.label || "Testimonials"}
+        <p className="group text-sm font-semibold tracking-[0.16em] uppercase">
+          <span className="relative block h-6 overflow-hidden">
+            <span className="block text-[var(--color-accent)] transition-transform duration-300 ease-out group-hover:-translate-y-6">
+              {cmsData?.label || "Testimonials"}
+            </span>
+            <span className="absolute inset-x-0 top-6 block text-[var(--color-accent-hover)] transition-transform duration-300 ease-out group-hover:-translate-y-6">
+              {cmsData?.label || "Testimonials"}
+            </span>
+          </span>
         </p>
         <h2 className="mt-3 font-heading text-3xl font-semibold text-[var(--color-heading)] md:text-4xl">
-          {cmsData?.title || "Trusted by Smiles Across Generations"}
+          {(cmsData?.title || "Trusted by Smiles Across Generations").includes("Across Generations") ? (
+            <>
+              {(cmsData?.title || "Trusted by Smiles Across Generations").replace("Across Generations", "").trim()}{" "}
+              <span className="text-[var(--color-accent)]">Across Generations</span>
+            </>
+          ) : (
+            cmsData?.title || "Trusted by Smiles Across Generations"
+          )}
         </h2>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--color-body)] md:text-base">
           {cmsData?.subtitle ||
