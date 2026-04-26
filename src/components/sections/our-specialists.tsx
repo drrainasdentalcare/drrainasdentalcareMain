@@ -26,11 +26,17 @@ const fallbackSpecialists = [
     role: "Consultant Oral and Maxillofacial Radiologist and Oral Medicine Specialist",
     image: "/Images/Ourspecialist/kamakshi.png",
   },
-] as const;
+];
 
 type OurSpecialistsSectionProps = {
   cmsData?: SanitySpecialistsSection | null;
 };
+
+const normalizeKey = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
 
 export function OurSpecialistsSection({ cmsData }: OurSpecialistsSectionProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -46,10 +52,17 @@ export function OurSpecialistsSection({ cmsData }: OurSpecialistsSectionProps) {
       }))
       .filter((doctor) => doctor.name && doctor.role && doctor.image) ?? [];
 
-  const specialists =
-    cmsSpecialists.length > 0
-      ? cmsSpecialists
-      : fallbackSpecialists.map((doctor) => ({ ...doctor, alt: doctor.name }));
+  const baseSpecialists = fallbackSpecialists.map((doctor) => ({ ...doctor, alt: doctor.name }));
+  const specialists = [...baseSpecialists];
+  for (const cmsDoctor of cmsSpecialists) {
+    const cmsKey = normalizeKey(cmsDoctor.name);
+    const existingIndex = specialists.findIndex((doctor) => normalizeKey(doctor.name) === cmsKey);
+    if (existingIndex >= 0) {
+      specialists[existingIndex] = cmsDoctor;
+    } else {
+      specialists.push(cmsDoctor);
+    }
+  }
 
   const heading = cmsData?.title || "Meet the Experts Behind Your Smile";
   const highlightText = cmsData?.highlightText || "Behind Your Smile";

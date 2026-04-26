@@ -43,11 +43,18 @@ const fallbackServices = [
       "Safe and comfortable tooth extraction procedures performed with precision and post-care guidance.",
     image: "/Images/Services/dentalexraction.png",
   },
-] as const;
+];
 
 type ServicesSectionProps = {
   cmsData?: SanityServicesSection | null;
 };
+
+const normalizeKey = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
 
 export function ServicesSection({ cmsData }: ServicesSectionProps) {
   const cmsServices =
@@ -60,13 +67,21 @@ export function ServicesSection({ cmsData }: ServicesSectionProps) {
       }))
       .filter((item) => item.title && item.description && item.image) ?? [];
 
-  const services =
-    cmsServices.length > 0
-      ? cmsServices
-      : fallbackServices.map((item) => ({
-          ...item,
-          alt: item.title,
-        }));
+  const baseServices = fallbackServices.map((item) => ({
+    ...item,
+    alt: item.title,
+  }));
+
+  const services = [...baseServices];
+  for (const cmsService of cmsServices) {
+    const cmsKey = normalizeKey(cmsService.title);
+    const existingIndex = services.findIndex((service) => normalizeKey(service.title) === cmsKey);
+    if (existingIndex >= 0) {
+      services[existingIndex] = cmsService;
+    } else {
+      services.push(cmsService);
+    }
+  }
 
   const heading = cmsData?.title || "Complete Dental Care Under One Roof";
   const highlightText = cmsData?.highlightText || "Under One Roof";
