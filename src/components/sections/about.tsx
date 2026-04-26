@@ -34,7 +34,7 @@ export function AboutPreviewSection() {
             </p>
             <h3 className="mt-3 font-heading text-3xl font-semibold text-[var(--color-heading)] md:text-4xl">
               Where Experience Meets{" "}
-              <span className="text-[var(--color-accent)]">Personal Care</span>
+              <span className="text-[var(--color-accent)]">Dental Care</span>
             </h3>
             <p className="mt-5 text-base leading-7 text-[var(--color-body)]">
               For nearly three decades, Dr. Raina&apos;s Dental Care &amp;
