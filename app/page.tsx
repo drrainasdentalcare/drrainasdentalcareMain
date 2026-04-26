@@ -11,10 +11,12 @@ import { ServicesSection } from "@/components/sections/services";
 import { TestimonialsSection } from "@/components/sections/testimonials";
 import { WhyChooseUsSection } from "@/components/sections/why-choose-us";
 import { getGallerySection } from "@/src/sanity/queries/gallery";
+import { getServicesSection } from "@/src/sanity/queries/services";
 import { getTestimonialsSection } from "@/src/sanity/queries/testimonials";
 
 export default async function Home() {
   const gallerySection = await getGallerySection();
+  const servicesSection = await getServicesSection();
   const testimonialsSection = await getTestimonialsSection();
 
   return (
@@ -24,7 +26,7 @@ export default async function Home() {
       <main className="flex min-h-full flex-1 flex-col bg-[var(--color-bg)]" style={dentalThemeVars}>
         <HeroSection />
         <AboutPreviewSection />
-        <ServicesSection />
+        <ServicesSection cmsData={servicesSection} />
         <WhyChooseUsSection />
         <OurSpecialistsSection />
         <PhotoGallerySection cmsData={gallerySection} />

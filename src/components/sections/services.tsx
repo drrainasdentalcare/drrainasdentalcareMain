@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { dentalThemeVars } from "@/constants/theme";
+import type { SanityServicesSection } from "@/src/sanity/types/services";
 
-const services = [
+const fallbackServices = [
   {
     title: "Routine Exams",
     description:
@@ -44,7 +45,34 @@ const services = [
   },
 ] as const;
 
-export function ServicesSection() {
+type ServicesSectionProps = {
+  cmsData?: SanityServicesSection | null;
+};
+
+export function ServicesSection({ cmsData }: ServicesSectionProps) {
+  const cmsServices =
+    cmsData?.items
+      ?.map((item) => ({
+        title: item.title ?? "",
+        description: item.description ?? "",
+        image: item.image?.asset?.url ?? "",
+        alt: item.image?.alt ?? item.title ?? "Service image",
+      }))
+      .filter((item) => item.title && item.description && item.image) ?? [];
+
+  const services =
+    cmsServices.length > 0
+      ? cmsServices
+      : fallbackServices.map((item) => ({
+          ...item,
+          alt: item.title,
+        }));
+
+  const heading = cmsData?.title || "Complete Dental Care Under One Roof";
+  const highlightText = cmsData?.highlightText || "Under One Roof";
+  const hasHighlight = Boolean(highlightText) && heading.includes(highlightText);
+  const headingParts = hasHighlight ? heading.split(highlightText) : [heading];
+
   return (
     <section
       id="services"
@@ -55,20 +83,23 @@ export function ServicesSection() {
         <p className="group text-sm font-semibold tracking-[0.16em] uppercase">
           <span className="relative block h-6 overflow-hidden">
             <span className="block text-[var(--color-accent)] transition-transform duration-300 ease-out group-hover:-translate-y-6">
-              Our Services
+              {cmsData?.label || "Our Services"}
             </span>
             <span className="absolute inset-x-0 top-6 block text-[var(--color-accent-hover)] transition-transform duration-300 ease-out group-hover:-translate-y-6">
-              Our Services
+              {cmsData?.label || "Our Services"}
             </span>
           </span>
         </p>
         <h2 className="mt-3 font-heading text-3xl font-semibold text-[var(--color-heading)] md:text-4xl">
-          Complete Dental Care{" "}
-          <span className="text-[var(--color-accent)]">Under One Roof</span>
+          {headingParts[0]}
+          {hasHighlight ? (
+            <span className="text-[var(--color-accent)]">{highlightText}</span>
+          ) : null}
+          {headingParts[1] || ""}
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--color-body)] md:text-base">
-          Personalized treatment plans, experienced specialists, and modern
-          techniques for every stage of your dental journey.
+          {cmsData?.subtitle ||
+            "Personalized treatment plans, experienced specialists, and modern techniques for every stage of your dental journey."}
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:mt-10 md:gap-5">
@@ -81,7 +112,7 @@ export function ServicesSection() {
                 <div className="relative h-full w-full">
                   <Image
                     src={service.image}
-                    alt={service.title}
+                    alt={service.alt}
                     fill
                     className="object-cover object-bottom transition duration-500 group-hover:scale-[1.03]"
                     sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 33vw"
