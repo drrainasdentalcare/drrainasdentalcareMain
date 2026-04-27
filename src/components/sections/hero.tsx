@@ -27,8 +27,16 @@ export function HeroSection() {
             Established 1996 · New Delhi
           </p>
           <h1 className="mt-5 font-heading text-3xl leading-[1.08] font-semibold text-white sm:text-4xl">
-            Redefining Smiles with
-            <span className="block text-[var(--color-accent)]">
+            <span
+              className="block text-[2.3rem] leading-[0.95] font-normal text-white sm:text-[2.7rem]"
+              style={{ fontFamily: '"Brush Script EF", "Brush Script MT", cursive' }}
+            >
+              Redefining Smiles with
+            </span>
+            <span
+              className="block text-[2.6rem] leading-[0.95] font-normal text-[var(--color-accent)] sm:text-[3.1rem]"
+              style={{ fontFamily: '"Brush Script EF", "Brush Script MT", cursive' }}
+            >
               Precision &amp; Care
             </span>
           </h1>
@@ -79,8 +87,16 @@ export function HeroSection() {
           Established 1996 · New Delhi
         </p>
         <h1 className="mt-5 font-heading text-3xl leading-[1.08] font-semibold text-white sm:text-4xl md:text-5xl lg:text-6xl">
-          Redefining Smiles with
-          <span className="block text-[var(--color-accent)]">
+          <span
+            className="block text-[3rem] leading-[0.92] font-normal text-white sm:text-[3.4rem] md:text-[4.2rem] lg:text-[4.8rem]"
+            style={{ fontFamily: '"Brush Script EF", "Brush Script MT", cursive' }}
+          >
+            Redefining Smiles with
+          </span>
+          <span
+            className="block text-[3.5rem] leading-[0.9] font-normal text-[var(--color-accent)] sm:text-[3.9rem] md:text-[4.8rem] lg:text-[5.4rem]"
+            style={{ fontFamily: '"Brush Script EF", "Brush Script MT", cursive' }}
+          >
             Precision &amp; Care
           </span>
         </h1>
