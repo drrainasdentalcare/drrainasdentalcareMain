@@ -11,7 +11,7 @@ export function HeroSection() {
       style={dentalThemeVars}
     >
       {/* Mobile hero image + mobile content (visible below md) */}
-      <div className="relative h-[84svh] w-full md:hidden">
+      <div className="relative h-[700px] w-full sm:h-[760px] md:hidden">
         <Image
           src="/Images/CenterImages/heromain2.jpg"
           alt="Dr. Raina's Dental Care & Implants clinic"
