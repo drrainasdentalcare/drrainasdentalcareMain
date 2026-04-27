@@ -20,9 +20,16 @@ import { getTestimonialsSection } from "@/src/sanity/queries/testimonials";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://drrainadentalcare.com";
 
 export const metadata: Metadata = {
-  title: "Dental Clinic in Rajouri Garden, New Delhi",
+  title: "Best Dental Clinic in India - Rajouri Garden, New Delhi",
   description:
-    "Visit Dr. Raina Dental Care & Implants in Rajouri Garden for dental implants, crowns, bridges, preventive dentistry, and family dental care.",
+    "Visit Dr. Raina Dental Care & Implants, a trusted dental clinic in India located in Rajouri Garden, New Delhi, for implants, crowns, bridges, and family dental care.",
+  keywords: [
+    "best dental clinic in India",
+    "best dental clinic in New Delhi",
+    "best dentist in Rajouri Garden",
+    "dental implants clinic Delhi",
+    "family dentist New Delhi",
+  ],
   alternates: {
     canonical: "/",
   },

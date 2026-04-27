@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://drrainadentalcare.com";
 const siteName = "Dr. Raina Dental Care & Implants";
-const defaultTitle = "Best Dentist in Rajouri Garden, New Delhi | Dr. Raina Dental Care";
+const defaultTitle = "Best Dental Clinic in India | Dentist in Rajouri Garden, New Delhi";
 const defaultDescription =
-  "Dr. Raina Dental Care & Implants provides comprehensive dental treatment in Rajouri Garden, New Delhi, including implants, crowns, bridges, and preventive care.";
+  "Dr. Raina Dental Care & Implants is a trusted dental clinic in India, based in Rajouri Garden, New Delhi, for implants, crowns, bridges, and preventive dental care.";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -35,8 +35,11 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   keywords: [
+    "best dental clinic in India",
+    "best dentist in India",
     "dentist in Rajouri Garden",
     "dental clinic in New Delhi",
+    "best dental clinic in Delhi",
     "dental implants in Delhi",
     "crowns and bridges",
     "cosmetic dentistry Delhi",
