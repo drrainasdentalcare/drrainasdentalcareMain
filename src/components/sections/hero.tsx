@@ -22,7 +22,7 @@ export function HeroSection() {
           className="object-cover object-[22%_center]"
         />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(10,14,22,0.1)_0%,rgba(10,14,22,0.35)_55%,rgba(10,14,22,0.75)_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 z-10 flex w-full flex-col items-center px-4 pb-24 text-center sm:pb-28">
+        <div className="absolute inset-x-0 bottom-0 z-10 flex w-full flex-col items-center px-4 pb-36 text-center sm:pb-40">
           <p className="inline-flex items-center rounded-full border border-[var(--color-accent-border)]/45 bg-[var(--color-accent)]/8 px-3 py-1 text-[10px] font-medium tracking-[0.12em] text-[var(--color-accent-soft)] uppercase backdrop-blur-sm transition hover:border-[var(--color-accent-border)]/70 hover:bg-[var(--color-accent)]/14">
             Established 1996 · New Delhi
           </p>
