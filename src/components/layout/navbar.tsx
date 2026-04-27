@@ -12,6 +12,7 @@ export function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const mobileToggleRef = useRef<HTMLButtonElement | null>(null);
 
@@ -55,13 +56,35 @@ export function Navbar() {
     };
   }, [mobileOpen]);
 
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <header
-      className="sticky top-0 z-20 w-full border-b border-[var(--color-border)] bg-[var(--color-surface)]/95 backdrop-blur"
+      className={`sticky top-0 z-20 w-full border-b backdrop-blur transition-all duration-300 ${
+        isScrolled
+          ? "border-[var(--color-border-soft)] bg-[var(--color-surface)]/98 shadow-[0_10px_28px_rgba(15,23,42,0.12)]"
+          : "border-[var(--color-border)] bg-[var(--color-surface)]/92"
+      }`}
       style={dentalThemeVars}
     >
       <div className="flex w-full items-center gap-4 px-4 py-3 sm:px-6 sm:py-4 lg:gap-10 lg:px-10">
-        <Link href="/" className="flex shrink-0 items-center gap-3">
+        <Link
+          href="/"
+          onClick={(event) => {
+            if (pathname === "/") {
+              event.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              setMobileOpen(false);
+              setMobileExpanded(null);
+            }
+          }}
+          className="flex shrink-0 items-center gap-3"
+        >
           <Image
             src="/Images/Logo/logo-main.png"
             alt="Dr Raina logo"

@@ -37,52 +37,62 @@ export function TestimonialsSection({ cmsData }: TestimonialsSectionProps) {
       style={dentalThemeVars}
     >
       <div className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-10">
-        <p className="group text-sm font-semibold tracking-[0.16em] uppercase">
-          <span className="relative block h-6 overflow-hidden">
-            <span className="block text-[var(--color-accent)] transition-transform duration-300 ease-out group-hover:-translate-y-6">
-              {cmsData?.label || "Testimonials"}
-            </span>
-            <span className="absolute inset-x-0 top-6 block text-[var(--color-accent-hover)] transition-transform duration-300 ease-out group-hover:-translate-y-6">
-              {cmsData?.label || "Testimonials"}
-            </span>
-          </span>
-        </p>
-        <h2 className="mt-3 font-heading text-3xl font-semibold text-[var(--color-heading)] md:text-4xl">
-          {(cmsData?.title || "Trusted by Smiles Across Generations").includes("Across Generations") ? (
-            <>
-              {(cmsData?.title || "Trusted by Smiles Across Generations").replace("Across Generations", "").trim()}{" "}
-              <span className="text-[var(--color-accent)]">Across Generations</span>
-            </>
-          ) : (
-            cmsData?.title || "Trusted by Smiles Across Generations"
-          )}
-        </h2>
-        <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--color-body)] md:text-base">
-          {cmsData?.subtitle ||
-            "Honest feedback from patients who trusted us with their treatment journey and smile care."}
-        </p>
+        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="group text-sm font-semibold tracking-[0.16em] uppercase">
+              <span className="relative block h-6 overflow-hidden">
+                <span className="block text-[var(--color-accent)] transition-transform duration-300 ease-out group-hover:-translate-y-6">
+                  {cmsData?.label || "Testimonials"}
+                </span>
+                <span className="absolute inset-x-0 top-6 block text-[var(--color-accent-hover)] transition-transform duration-300 ease-out group-hover:-translate-y-6">
+                  {cmsData?.label || "Testimonials"}
+                </span>
+              </span>
+            </p>
+            <h2 className="mt-3 font-heading text-3xl font-semibold text-[var(--color-heading)] md:text-4xl">
+              {(cmsData?.title || "Trusted by Smiles Across Generations").includes("Across Generations") ? (
+                <>
+                  {(cmsData?.title || "Trusted by Smiles Across Generations").replace("Across Generations", "").trim()}{" "}
+                  <span className="text-[var(--color-accent)]">Across Generations</span>
+                </>
+              ) : (
+                cmsData?.title || "Trusted by Smiles Across Generations"
+              )}
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--color-body)] md:text-base">
+              {cmsData?.subtitle ||
+                "Honest feedback from patients who trusted us with their treatment journey and smile care."}
+            </p>
+            <p className="mt-3 inline-flex w-fit items-center rounded-full border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)]/45 px-3 py-1 text-[11px] font-semibold tracking-[0.08em] text-[var(--color-accent)] uppercase">
+              Verified patient feedback
+            </p>
+          </div>
+
+          {testimonials.length ? (
+            <div className="flex justify-start gap-2 md:justify-end">
+              <button
+                type="button"
+                onClick={() => scrollTestimonials("left")}
+                aria-label="Scroll testimonials left"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-border-soft)] bg-white text-[var(--color-heading)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+              >
+                <span aria-hidden>←</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollTestimonials("right")}
+                aria-label="Scroll testimonials right"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-border-soft)] bg-white text-[var(--color-heading)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+              >
+                <span aria-hidden>→</span>
+              </button>
+            </div>
+          ) : null}
+        </div>
 
         <div className="mt-8 md:mt-10">
           {testimonials.length ? (
             <div className="relative">
-              <div className="mb-4 flex justify-end gap-2">
-                <button
-                  type="button"
-                  onClick={() => scrollTestimonials("left")}
-                  aria-label="Scroll testimonials left"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-border-soft)] bg-white text-[var(--color-heading)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
-                >
-                  <span aria-hidden>←</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => scrollTestimonials("right")}
-                  aria-label="Scroll testimonials right"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-border-soft)] bg-white text-[var(--color-heading)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
-                >
-                  <span aria-hidden>→</span>
-                </button>
-              </div>
               <div
                 ref={sliderRef}
                 className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 md:gap-5 [&::-webkit-scrollbar]:hidden"
