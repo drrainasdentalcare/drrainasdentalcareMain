@@ -79,7 +79,7 @@ export function Navbar() {
                 fontWeight: 500,
               }}
             >
-              Dr Raina&apos;s
+              Dr Raina’s
             </span>
             <span className="text-[0.68rem] font-bold tracking-tight text-[var(--color-black)] sm:text-sm lg:text-base">
               Dental Care &amp; Implants

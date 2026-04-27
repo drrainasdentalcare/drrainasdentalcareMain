@@ -68,7 +68,7 @@ export function Footer() {
                     fontWeight: 500,
                   }}
                 >
-                  Dr Raina&apos;s
+                  Dr Raina’s
                 </span>
                 <span className="text-[0.78rem] font-bold tracking-tight text-white sm:text-[0.85rem]">
                   Dental Care &amp; Implants
