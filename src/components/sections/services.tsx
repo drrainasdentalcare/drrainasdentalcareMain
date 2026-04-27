@@ -1,4 +1,7 @@
+ "use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { dentalThemeVars } from "@/constants/theme";
 import type { SanityServicesSection } from "@/src/sanity/types/services";
 
@@ -57,6 +60,24 @@ const normalizeKey = (value: string) =>
     .trim();
 
 export function ServicesSection({ cmsData }: ServicesSectionProps) {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.14 },
+    );
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   const cmsServices =
     cmsData?.items
       ?.map((item) => ({
@@ -90,6 +111,7 @@ export function ServicesSection({ cmsData }: ServicesSectionProps) {
 
   return (
     <section
+      ref={sectionRef}
       id="services"
       className="w-full scroll-mt-24 border-t border-[var(--color-border)] bg-[var(--color-surface)] py-14 md:py-20"
       style={dentalThemeVars}
@@ -118,10 +140,13 @@ export function ServicesSection({ cmsData }: ServicesSectionProps) {
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:mt-10 md:gap-5">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <article
               key={service.title}
-              className="group overflow-hidden rounded-2xl border border-[var(--color-accent-border)]/60 bg-[var(--color-bg)] shadow-[0_10px_26px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-1 hover:border-[var(--color-accent-border)] hover:shadow-[0_16px_32px_rgba(15,23,42,0.12)]"
+              className={`group overflow-hidden rounded-2xl border border-[var(--color-accent-border)]/60 bg-[var(--color-bg)] shadow-[0_10px_26px_rgba(15,23,42,0.08)] transition-all duration-500 hover:-translate-y-1 hover:border-[var(--color-accent-border)] hover:shadow-[0_16px_32px_rgba(15,23,42,0.12)] ${
+                isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+              }`}
+              style={{ transitionDelay: `${index * 70}ms` }}
             >
               <div className="relative h-48 w-full overflow-hidden border-b border-[var(--color-border-soft)] bg-[var(--color-surface)]">
                 <div className="relative h-full w-full">
