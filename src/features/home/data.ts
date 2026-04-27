@@ -1,7 +1,7 @@
 import type { HomePageContent } from "@/features/home/types";
 
 export const homePageContent: HomePageContent = {
-  clinicName: "Dr. Raina Dental Care & Implant",
+  clinicName: "Dr. Raina Dental Care & Implants",
   tagline: "30 Years of Trusted Dental Care in New Delhi",
   description:
     "Trusted since 1996 for world-class dental care. From everyday checkups to advanced implants and specialist treatments, every smile gets the same skill, warmth, and attention.",

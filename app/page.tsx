@@ -1,4 +1,5 @@
 import { dentalThemeVars } from "@/constants/theme";
+import type { Metadata } from "next";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { TopBar } from "@/components/layout/top-bar";
@@ -16,6 +17,17 @@ import { getServicesSection } from "@/src/sanity/queries/services";
 import { getSpecialistsSection } from "@/src/sanity/queries/specialists";
 import { getTestimonialsSection } from "@/src/sanity/queries/testimonials";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://drrainadentalcare.com";
+
+export const metadata: Metadata = {
+  title: "Dental Clinic in Rajouri Garden, New Delhi",
+  description:
+    "Visit Dr. Raina Dental Care & Implants in Rajouri Garden for dental implants, crowns, bridges, preventive dentistry, and family dental care.",
+  alternates: {
+    canonical: "/",
+  },
+};
+
 export default async function Home() {
   const aboutSection = await getAboutSection();
   const gallerySection = await getGallerySection();
@@ -27,6 +39,28 @@ export default async function Home() {
     <>
       <TopBar />
       <Navbar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Dentist",
+            name: "Dr. Raina Dental Care & Implants",
+            url: siteUrl,
+            image: `${siteUrl}/Images/AboutUs/centerfront(landscape).jpg`,
+            telephone: ["+91-8595389394", "+91-9810167454", "+91-11-41017000"],
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "91-A, MIG Flats, Rajouri Garden",
+              addressLocality: "New Delhi",
+              postalCode: "110027",
+              addressCountry: "IN",
+            },
+            areaServed: ["Rajouri Garden", "West Delhi", "New Delhi"],
+            sameAs: ["https://www.google.com/maps/search/?api=1&query=Dr.+Kapil+Raina+Dental+Care+and+Implant%2C+Rajouri+Garden%2C+New+Delhi"],
+          }),
+        }}
+      />
       <main className="flex min-h-full flex-1 flex-col bg-[var(--color-bg)]" style={dentalThemeVars}>
         <HeroSection />
         <AboutPreviewSection cmsData={aboutSection} />

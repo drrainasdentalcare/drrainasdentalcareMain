@@ -1,9 +1,19 @@
 import Image from "next/image";
 import { Award, CheckCircle2, ShieldCheck, Sparkles, Stethoscope } from "lucide-react";
+import type { Metadata } from "next";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { TopBar } from "@/components/layout/top-bar";
 import { dentalThemeVars } from "@/constants/theme";
+
+export const metadata: Metadata = {
+  title: "About Our Dental Clinic",
+  description:
+    "Learn about Dr. Raina Dental Care & Implants, a trusted dental clinic in Rajouri Garden, New Delhi, serving patients with comprehensive care since 1996.",
+  alternates: {
+    canonical: "/about",
+  },
+};
 
 export default function AboutPage() {
   return (

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Award, BriefcaseBusiness, GraduationCap, Globe, ShieldCheck, Stethoscope } from "lucide-react";
+import type { Metadata } from "next";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { TopBar } from "@/components/layout/top-bar";
@@ -26,6 +27,15 @@ const pastRoles = [
   "Vice President, Honorary Jt. Secretary, and Honorary Secretary, IDA West Delhi",
   "Chairman CDH & Joint Secretary, IDA Delhi State",
 ];
+
+export const metadata: Metadata = {
+  title: "Know Your Doctor - Dr. Kapil K Raina",
+  description:
+    "Read the profile of Dr. Kapil K Raina, founder of Dr. Raina Dental Care & Implants, with clinical experience, leadership roles, and dental expertise.",
+  alternates: {
+    canonical: "/know-your-doctor",
+  },
+};
 
 export default function KnowYourDoctorPage() {
   return (

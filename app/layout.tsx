@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://drrainadentalcare.com";
+const siteName = "Dr. Raina Dental Care & Implants";
+const defaultTitle = "Best Dentist in Rajouri Garden, New Delhi | Dr. Raina Dental Care";
+const defaultDescription =
+  "Dr. Raina Dental Care & Implants provides comprehensive dental treatment in Rajouri Garden, New Delhi, including implants, crowns, bridges, and preventive care.";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -18,8 +24,47 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dr. Raina Dental Center",
-  description: "Modern dental website for Dr. Raina Dental Center.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: defaultTitle,
+    template: `%s | ${siteName}`,
+  },
+  description: defaultDescription,
+  applicationName: siteName,
+  alternates: {
+    canonical: "/",
+  },
+  keywords: [
+    "dentist in Rajouri Garden",
+    "dental clinic in New Delhi",
+    "dental implants in Delhi",
+    "crowns and bridges",
+    "cosmetic dentistry Delhi",
+  ],
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    title: defaultTitle,
+    description: defaultDescription,
+    siteName,
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: defaultDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({
