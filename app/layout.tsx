@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Inter, Playfair_Display } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-heading",
+});
+const geistSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
 });
 
 const geistMono = Geist_Mono({
@@ -30,6 +34,7 @@ export default function RootLayout({
         "h-full antialiased font-sans",
         inter.variable,
         playfair.variable,
+        geistSans.variable,
         geistMono.variable
       )}
     >

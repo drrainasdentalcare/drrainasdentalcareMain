@@ -50,11 +50,11 @@ export function AboutPreviewSection({ cmsData }: AboutPreviewSectionProps) {
               {hasHighlight ? <span className="text-[var(--color-accent)]">{highlightText}</span> : null}
               {headingParts[1] || ""}
             </h3>
-            <p className="mt-5 text-base leading-7 text-[var(--color-body)]">
+            <p className="mt-5 text-base leading-7 text-[var(--color-body)] text-justify">
               {cmsData?.paragraphOne ||
                 "For nearly three decades, Dr. Raina's Dental Care & Implants has earned patient trust through ethical treatment, precise dentistry, and a warm, patient-first approach for every smile."}
             </p>
-            <p className="mt-4 text-base leading-7 text-[var(--color-body)]">
+            <p className="mt-4 text-base leading-7 text-[var(--color-body)] text-justify">
               {cmsData?.paragraphTwo ||
                 "Led by experienced specialists, the clinic combines advanced technology with thoughtful consultation to offer complete dental solutions, from preventive care and restorative dentistry to implants and smile-focused treatments tailored for long-term oral health."}
             </p>

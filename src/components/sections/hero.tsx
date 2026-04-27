@@ -40,7 +40,7 @@ export function HeroSection() {
               Precision &amp; Care
             </span>
           </h1>
-          <p className="mt-4 max-w-2xl text-sm leading-6 text-white/90 sm:mt-5 sm:text-base sm:leading-7">
+          <p className="mt-4 max-w-2xl text-sm leading-6 text-white/90 sm:mt-5 sm:text-base sm:leading-7" style={{ fontFamily: "var(--font-geist-sans), sans-serif" }}>
             {homePageContent.description}
           </p>
           <div className="mt-8 flex max-w-xs flex-col gap-2.5 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3">
@@ -100,7 +100,7 @@ export function HeroSection() {
             Precision &amp; Care
           </span>
         </h1>
-        <p className="mt-4 max-w-2xl text-sm leading-6 text-white/90 sm:mt-5 sm:text-base sm:leading-7 md:text-lg">
+        <p className="mt-4 max-w-2xl text-sm leading-6 text-white/90 sm:mt-5 sm:text-base sm:leading-7 md:text-lg" style={{ fontFamily: "var(--font-geist-sans), sans-serif" }}>
           {homePageContent.description}
         </p>
         <div className="mt-8 flex max-w-xs flex-col gap-2.5 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3">
