@@ -11,15 +11,20 @@ export default async function OnlineConsultationPage() {
   const cmsData = await getOnlineConsultationPage();
   const consultationPhone = cmsData?.phone || "+91 8595389394";
   const consultationFee = cmsData?.consultationFee || "Rs.2000/-";
-  const qrImageSrc = cmsData?.qrImage?.asset?.url || "/Images/OnlineConsultation/qr.jpg";
-  const qrImageAlt = cmsData?.qrImage?.alt || "QR code to pay for online consultation";
+  const qrImageSrc =
+    cmsData?.qrImage?.asset?.url || "/Images/OnlineConsultation/qr.jpg";
+  const qrImageAlt =
+    cmsData?.qrImage?.alt || "QR code to pay for online consultation";
   const whatsappLink = `https://wa.me/${consultationPhone.replace(/[^\d]/g, "")}`;
 
   return (
     <>
       <TopBar />
       <Navbar />
-      <main className="flex-1 bg-[var(--color-bg)] py-12 md:py-16" style={dentalThemeVars}>
+      <main
+        className="flex-1 bg-[var(--color-bg)] py-12 md:py-16"
+        style={dentalThemeVars}
+      >
         <section className="mx-auto w-full max-w-6xl px-4 md:px-8 lg:px-10">
           <div className="grid items-stretch gap-6 rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 md:gap-8 md:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:p-10">
             <div>
@@ -31,7 +36,8 @@ export default async function OnlineConsultationPage() {
                 {cmsData?.title || "Online Consultation"}
               </h1>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--color-body)] md:text-base">
-                {cmsData?.description || "Scan the QR code to pay for the Online Consultation service by our team."}
+                {cmsData?.description ||
+                  "Scan the QR code to pay for the Online Consultation service by our team."}
               </p>
 
               <div className="mt-6 space-y-4 rounded-2xl border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)]/40 p-5 md:p-6">
@@ -41,7 +47,8 @@ export default async function OnlineConsultationPage() {
                   </span>
                   <div>
                     <p className="text-xs font-semibold tracking-[0.12em] text-[var(--color-muted)] uppercase">
-                      {cmsData?.consultationFeeLabel || "Online Consultation Fee"}
+                      {cmsData?.consultationFeeLabel ||
+                        "Online Consultation Fee"}
                     </p>
                     <p className="mt-1 font-heading text-2xl font-semibold text-[var(--color-heading)]">
                       {consultationFee}
@@ -58,21 +65,23 @@ export default async function OnlineConsultationPage() {
                       {cmsData?.afterPaymentLabel || "After Payment"}
                     </p>
                     <p className="mt-1 text-sm leading-6 text-[var(--color-body)] md:text-base">
-                      Kindly connect with us on WhatsApp and share your payment proof to confirm your online
-                      consultation.
+                      Kindly connect with us on WhatsApp and share your payment
+                      proof to confirm your online consultation.
                     </p>
                     <p className="mt-1.5 text-sm font-semibold text-[var(--color-heading)] md:text-base">
                       WhatsApp Number:{" "}
-                      <span className="text-emerald-700">{consultationPhone}</span>
+                      <span className="text-emerald-700">
+                        {consultationPhone}
+                      </span>
                     </p>
                     <Link
                       href={whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 inline-flex items-center gap-2 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-xs font-semibold tracking-[0.08em] text-white uppercase transition hover:border-emerald-700 hover:bg-emerald-700"
-                    >
-                      <MessageCircle className="h-4 w-4" />
-                      WhatsApp Payment Proof
+                      className="mt-3 inline-flex w-full items-center justify-center gap-2 border border-[#25d366]/30 bg-[#25d366]/10 px-5 py-3 text-sm font-semibold text-[#128c7e] transition hover:bg-[#25d366]/20 sm:w-auto sm:justify-start"
+                      >
+                      <MessageCircle className="h-4 w-4 shrink-0" />
+                      WhatsApp
                     </Link>
                   </div>
                 </div>
@@ -80,7 +89,8 @@ export default async function OnlineConsultationPage() {
 
               <p className="mt-5 inline-flex items-center gap-2 text-xs text-[var(--color-muted)] md:text-sm">
                 <ShieldCheck className="h-4 w-4 text-[var(--color-accent)]" />
-                {cmsData?.note || "Please share your payment confirmation when you call."}
+                {cmsData?.note ||
+                  "Please share your payment confirmation when you call."}
               </p>
             </div>
 
