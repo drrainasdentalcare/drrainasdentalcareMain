@@ -131,7 +131,10 @@ export default function KnowYourDoctorPage() {
                   Dr. Raina has the unique distinction of chairing the session on &ldquo;Business of Tomorrow -
                   Healthcare&rdquo; at the Global Indian Business Meet (GIBM-2012), held at the Marriott Marquis, Times
                   Square, New York, sharing the
-                  stage with global dignitaries. In 2013, he was honored as one of the Leading Health Professionals of
+                  stage with global dignitaries.
+                </p>
+                <p className="mt-3 text-sm leading-7 text-[var(--color-body)] text-justify">
+                  In 2013, he was honored as one of the Leading Health Professionals of
                   the World by the International Biographical Centre, Cambridge, England.
                 </p>
               </article>

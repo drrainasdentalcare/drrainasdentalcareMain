@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IndianRupee, Phone, QrCode, ShieldCheck } from "lucide-react";
+import { IndianRupee, MessageCircle, QrCode, ShieldCheck } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { TopBar } from "@/components/layout/top-bar";
@@ -13,6 +13,7 @@ export default async function OnlineConsultationPage() {
   const consultationFee = cmsData?.consultationFee || "Rs.2000/-";
   const qrImageSrc = cmsData?.qrImage?.asset?.url || "/Images/OnlineConsultation/qr.jpg";
   const qrImageAlt = cmsData?.qrImage?.alt || "QR code to pay for online consultation";
+  const whatsappLink = `https://wa.me/${consultationPhone.replace(/[^\d]/g, "")}`;
 
   return (
     <>
@@ -50,22 +51,29 @@ export default async function OnlineConsultationPage() {
 
                 <div className="flex items-start gap-3">
                   <span className="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent)]/15">
-                    <Phone className="h-4 w-4 text-[var(--color-accent)]" />
+                    <MessageCircle className="h-4 w-4 text-[var(--color-accent)]" />
                   </span>
                   <div>
                     <p className="text-xs font-semibold tracking-[0.12em] text-[var(--color-muted)] uppercase">
                       {cmsData?.afterPaymentLabel || "After Payment"}
                     </p>
                     <p className="mt-1 text-sm leading-6 text-[var(--color-body)] md:text-base">
-                      {cmsData?.afterPaymentText || "Kindly contact us on"}{" "}
-                      <Link
-                        href={`tel:${consultationPhone.replace(/[^\d+]/g, "")}`}
-                        className="font-semibold text-[var(--color-accent)] transition hover:text-[var(--color-accent-hover)]"
-                      >
-                        {consultationPhone}
-                      </Link>{" "}
-                      {cmsData?.afterPaymentSuffix || "to avail the Online Consultation service."}
+                      Kindly connect with us on WhatsApp and share your payment proof to confirm your online
+                      consultation.
                     </p>
+                    <p className="mt-1.5 text-sm font-semibold text-[var(--color-heading)] md:text-base">
+                      WhatsApp Number:{" "}
+                      <span className="text-emerald-700">{consultationPhone}</span>
+                    </p>
+                    <Link
+                      href={whatsappLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-2 rounded-full border border-emerald-600 bg-emerald-600 px-4 py-2 text-xs font-semibold tracking-[0.08em] text-white uppercase transition hover:border-emerald-700 hover:bg-emerald-700"
+                    >
+                      <MessageCircle className="h-4 w-4" />
+                      WhatsApp Payment Proof
+                    </Link>
                   </div>
                 </div>
               </div>
