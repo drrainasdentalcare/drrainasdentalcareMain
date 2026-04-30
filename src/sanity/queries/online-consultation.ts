@@ -12,6 +12,7 @@ const onlineConsultationPageQuery = groq`
     afterPaymentLabel,
     afterPaymentText,
     phone,
+    callPhone,
     afterPaymentSuffix,
     note,
     qrLabel,

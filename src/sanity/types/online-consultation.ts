@@ -7,6 +7,7 @@ export type SanityOnlineConsultationPage = {
   afterPaymentLabel?: string;
   afterPaymentText?: string;
   phone?: string;
+  callPhone?: string;
   afterPaymentSuffix?: string;
   note?: string;
   qrLabel?: string;
