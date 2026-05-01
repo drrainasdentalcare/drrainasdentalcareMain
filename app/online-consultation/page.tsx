@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IndianRupee, MessageCircle, Phone, QrCode, ShieldCheck } from "lucide-react";
+import { IndianRupee, MessageCircle, QrCode, ShieldCheck } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { TopBar } from "@/components/layout/top-bar";
@@ -10,7 +10,6 @@ import { getOnlineConsultationPage } from "@/src/sanity/queries/online-consultat
 export default async function OnlineConsultationPage() {
   const cmsData = await getOnlineConsultationPage();
   const consultationPhone = cmsData?.phone || "+91 8595389394";
-  const callPhone = cmsData?.callPhone || "+91 9810167454";
   const consultationFee = cmsData?.consultationFee || "Rs.2000/-";
   const qrImageSrc =
     cmsData?.qrImage?.asset?.url || "/Images/OnlineConsultation/qr.jpg";
@@ -70,21 +69,12 @@ export default async function OnlineConsultationPage() {
                       proof to confirm your online consultation.
                     </p>
                     <p className="mt-1.5 text-sm font-semibold text-[var(--color-heading)] md:text-base">
-                      WhatsApp Number:{" "}
+                      Call / WhatsApp:{" "}
                       <span className="text-emerald-700">
                         {consultationPhone}
                       </span>
                     </p>
-                    <p className="mt-1 text-sm font-semibold text-[var(--color-heading)] md:text-base">
-                      Call us at:{" "}
-                      <Link
-                        href={`tel:${callPhone.replace(/[^\d+]/g, "")}`}
-                        className="text-[var(--color-accent)] hover:underline"
-                      >
-                        {callPhone}
-                      </Link>
-                    </p>
-                    <div className="mt-3 flex flex-wrap gap-3">
+                    <div className="mt-3">
                       <Link
                         href={whatsappLink}
                         target="_blank"
@@ -93,13 +83,6 @@ export default async function OnlineConsultationPage() {
                       >
                         <MessageCircle className="h-4 w-4 shrink-0" />
                         WhatsApp
-                      </Link>
-                      <Link
-                        href={`tel:${callPhone.replace(/[^\d+]/g, "")}`}
-                        className="inline-flex items-center justify-center gap-2 border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/10 px-5 py-3 text-sm font-semibold text-[var(--color-accent)] transition hover:bg-[var(--color-accent)]/20"
-                      >
-                        <Phone className="h-4 w-4 shrink-0" />
-                        Call Now
                       </Link>
                     </div>
                   </div>
