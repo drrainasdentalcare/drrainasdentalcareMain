@@ -41,7 +41,7 @@ const fallbackServices = [
     image: "/Images/Services/orthodontic.jpg",
   },
   {
-    title: "Dental Extraction",
+    title: "Dental Extractions",
     description:
       "Safe and comfortable tooth extraction procedures performed with precision and post-care guidance.",
     image: "/Images/Services/dentalexraction.png",

@@ -33,7 +33,7 @@ export const homePageContent: HomePageContent = {
     { label: "Mail", href: "mailto:drrainasdentalcareandimplants@gmail.com" },
     {
       label: "Facebook",
-      href: "https://www.facebook.com/search/top?q=dr%20raina%27s%20dental%20care%20and%20implants",
+      href: "https://www.facebook.com/p/Dr-Rainas-Dental-Care-Implants-100054578223815/",
     },
   ],
   services: [
