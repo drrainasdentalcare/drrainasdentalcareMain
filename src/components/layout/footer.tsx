@@ -77,16 +77,17 @@ export function Footer() {
             </Link>
             <div className="mt-4 max-w-sm space-y-3 text-justify text-sm leading-6 text-white/70">
               <p>
-                Trusted dental center in Rajouri Garden, New Delhi for over
-                three decades from routine check‑ups to implants, root canals,
-                orthodontics and cosmetic dentistry.
+                Trusted Dental Center in Rajouri Garden, New Delhi for 30+ years of trusted excellence
+                in oral healthcare. Preventive care, routine check‑ups, dental
+                implants, root canal therapy, orthodontics &amp; cosmetic
+                dentistry.
               </p>
               <p>
-                Equipped with modern dental technology, strict sterilization
-                protocols, and internationally aligned infection‑control
-                standards. Led by experienced dental surgeons who combine
-                precision with compassionate care a beacon of patient‑centered
-                excellence in West Delhi.
+                Modern technology, strict sterilization, global
+                infection control standards. Experienced dental surgeons
+                delivering precision, compassionate care &amp; lasting results 
+                West Delhi&apos;s beacon for advanced oral healthcare, smile
+                design &amp; family dentistry.
               </p>
             </div>
             <div className="mt-4 flex items-start gap-2.5 text-sm leading-6 text-white/80">
