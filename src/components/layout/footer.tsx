@@ -85,7 +85,7 @@ export function Footer() {
                 Equipped with modern dental technology, strict sterilization
                 protocols, and internationally aligned infection‑control
                 standards. Led by experienced dental surgeons who combine
-                precision with compassionate care a beacon of patient‑centered
+                precision with compassionate care. A beacon of patient‑centered
                 excellence in West Delhi.
               </p>
             </div>
