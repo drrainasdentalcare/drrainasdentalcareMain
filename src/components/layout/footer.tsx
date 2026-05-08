@@ -75,11 +75,20 @@ export function Footer() {
                 </span>
               </span>
             </Link>
-            <p className="mt-4 max-w-sm text-sm leading-6 text-white/70">
-              A trusted dental center in Rajouri Garden offering routine to
-              advanced treatments with modern equipment, strict sterilization,
-              and compassionate care.
-            </p>
+            <div className="mt-4 max-w-sm space-y-3 text-justify text-sm leading-6 text-white/70">
+              <p>
+                Trusted dental center in Rajouri Garden, New Delhi for over
+                three decades from routine check‑ups to implants, root canals,
+                orthodontics and cosmetic dentistry.
+              </p>
+              <p>
+                Equipped with modern dental technology, strict sterilization
+                protocols, and internationally aligned infection‑control
+                standards. Led by experienced dental surgeons who combine
+                precision with compassionate care a beacon of patient‑centered
+                excellence in West Delhi.
+              </p>
+            </div>
             <div className="mt-4 flex items-start gap-2.5 text-sm leading-6 text-white/80">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent)]" />
               <span>
