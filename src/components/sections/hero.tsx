@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { MapPin, Phone } from "lucide-react";
+import { TrackedLink } from "@/components/tracked-link";
 import { dentalThemeVars } from "@/constants/theme";
 import { homePageContent } from "@/features/home/data";
 
@@ -44,24 +44,28 @@ export function HeroSection() {
             {homePageContent.description}
           </p>
           <div className="mt-8 flex max-w-xs flex-col gap-2.5 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3">
-            <Link
+            <TrackedLink
               href="tel:+918595389394"
+              clarityEvent="phone_click"
+              clarityLocation="hero"
               className="inline-flex items-center justify-center gap-2 border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)] px-5 py-2.5 text-xs font-semibold tracking-[0.12em] text-[var(--color-accent)] uppercase transition hover:border-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white sm:px-7 sm:py-3.5 sm:text-sm"
             >
               <Phone className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               Book an Appointment
-            </Link>
-            <Link
+            </TrackedLink>
+            <TrackedLink
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
                 `Dr. Raina's Dental Care & Implants ${homePageContent.addressLines.join(" ")}`,
               )}`}
               target="_blank"
               rel="noopener noreferrer"
+              clarityEvent="maps_click"
+              clarityLocation="hero"
               className="inline-flex items-center justify-center gap-2 border border-white/70 bg-white/15 px-4 py-2.5 text-[11px] font-semibold tracking-wide text-white uppercase backdrop-blur-sm transition hover:border-white hover:bg-white/25 sm:px-7 sm:py-3.5 sm:text-sm"
             >
               <MapPin className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               Locate Us
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </div>
@@ -104,24 +108,28 @@ export function HeroSection() {
           {homePageContent.description}
         </p>
         <div className="mt-8 flex max-w-xs flex-col gap-2.5 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3">
-          <Link
+          <TrackedLink
             href="tel:+918595389394"
+            clarityEvent="phone_click"
+            clarityLocation="hero"
             className="inline-flex items-center justify-center gap-2 border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)] px-5 py-2.5 text-xs font-semibold tracking-[0.12em] text-[var(--color-accent)] uppercase transition hover:border-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white sm:px-7 sm:py-3.5 sm:text-sm"
           >
             <Phone className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             Book an Appointment
-          </Link>
-          <Link
+          </TrackedLink>
+          <TrackedLink
             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
               `Dr. Raina's Dental Care & Implants ${homePageContent.addressLines.join(" ")}`,
             )}`}
             target="_blank"
             rel="noopener noreferrer"
+            clarityEvent="maps_click"
+            clarityLocation="hero"
             className="inline-flex items-center justify-center gap-2  border border-white/70 bg-white/15 px-4 py-2.5 text-[11px] font-semibold tracking-wide text-white uppercase backdrop-blur-sm transition hover:border-white hover:bg-white/25 sm:px-7 sm:py-3.5 sm:text-sm"
           >
             <MapPin className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             Locate Us
-          </Link>
+          </TrackedLink>
         </div>
       </div>
     </section>

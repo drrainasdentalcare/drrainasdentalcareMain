@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { Check, Copy, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { TrackedLink } from "@/components/tracked-link";
+import { trackClarityClick } from "@/lib/clarity";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { TopBar } from "@/components/layout/top-bar";
@@ -24,6 +25,7 @@ export default function ContactUsPage() {
     try {
       await navigator.clipboard.writeText(emailAddress);
       setIsEmailCopied(true);
+      trackClarityClick("copy_email_click", "contact_page");
       window.setTimeout(() => setIsEmailCopied(false), 1800);
     } catch {
       setIsEmailCopied(false);
@@ -59,12 +61,14 @@ export default function ContactUsPage() {
                     <div className="mt-3 space-y-2">
                       {phoneNumbers.map((phone) => (
                         <p key={phone}>
-                          <Link
+                          <TrackedLink
                             href={`tel:${phone.replace(/[^\d+]/g, "")}`}
+                            clarityEvent="phone_click"
+                            clarityLocation="contact_page"
                             className="text-sm font-medium text-[var(--color-body)] transition hover:text-[var(--color-accent)] md:text-base"
                           >
                             {phone}
-                          </Link>
+                          </TrackedLink>
                         </p>
                       ))}
                     </div>
@@ -78,12 +82,14 @@ export default function ContactUsPage() {
                       Email
                     </p>
                     <div className="mt-3 flex items-start justify-between gap-3">
-                      <Link
+                      <TrackedLink
                         href={`mailto:${emailAddress}`}
+                        clarityEvent="email_click"
+                        clarityLocation="contact_page"
                         className="text-sm font-medium break-all text-[var(--color-body)] transition hover:text-[var(--color-accent)] md:text-base"
                       >
                         {emailAddress}
-                      </Link>
+                      </TrackedLink>
                       <button
                         type="button"
                         onClick={copyEmail}
@@ -105,24 +111,28 @@ export default function ContactUsPage() {
                 <p className="mt-3 text-sm leading-7 text-[var(--color-body)] md:text-base">{clinicAddress}</p>
 
                 <div className="mt-6 flex flex-wrap items-center gap-3">
-                  <Link
+                  <TrackedLink
                     href={`https://wa.me/${whatsappNumber.replace(/[^\d]/g, "")}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    clarityEvent="whatsapp_click"
+                    clarityLocation="contact_page"
                     className="inline-flex items-center gap-2 border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)] px-5 py-2.5 text-xs font-semibold tracking-[0.12em] text-[var(--color-accent)] uppercase transition hover:border-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white"
                   >
                     <MessageCircle className="h-4 w-4" />
                     WhatsApp Us
-                  </Link>
-                  <Link
+                  </TrackedLink>
+                  <TrackedLink
                     href={mapsOpenUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    clarityEvent="maps_click"
+                    clarityLocation="contact_page"
                     className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-white px-5 py-2.5 text-xs font-semibold tracking-[0.12em] text-[var(--color-heading)] uppercase transition hover:border-[var(--color-accent-border)] hover:text-[var(--color-accent)]"
                   >
                     <MapPin className="h-4 w-4" />
                     Open in Maps
-                  </Link>
+                  </TrackedLink>
                 </div>
               </article>
             </div>
@@ -134,15 +144,17 @@ export default function ContactUsPage() {
             <h2 className="font-heading text-xl font-semibold text-[var(--color-heading)] md:text-2xl">
               Find Us on Google Maps
             </h2>
-            <Link
+            <TrackedLink
               href={mapsOpenUrl}
               target="_blank"
               rel="noopener noreferrer"
+              clarityEvent="maps_click"
+              clarityLocation="contact_page"
               className="inline-flex items-center gap-2 border border-[var(--color-border)] bg-white px-4 py-2 text-[11px] font-semibold tracking-[0.12em] text-[var(--color-heading)] uppercase transition hover:border-[var(--color-accent-border)] hover:text-[var(--color-accent)]"
             >
               <MapPin className="h-4 w-4" />
               Open Map
-            </Link>
+            </TrackedLink>
           </div>
           <iframe
             title="Dr Kapil Raina Dental Care and Implant location map"

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { IndianRupee, MessageCircle, QrCode, ShieldCheck } from "lucide-react";
+import { TrackedLink } from "@/components/tracked-link";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { TopBar } from "@/components/layout/top-bar";
@@ -75,15 +75,17 @@ export default async function OnlineConsultationPage() {
                       </span>
                     </p>
                     <div className="mt-3">
-                      <Link
+                      <TrackedLink
                         href={whatsappLink}
                         target="_blank"
                         rel="noopener noreferrer"
+                        clarityEvent="whatsapp_click"
+                        clarityLocation="online_consultation"
                         className="inline-flex items-center justify-center gap-2 border border-[#25d366]/30 bg-[#25d366]/10 px-5 py-3 text-sm font-semibold text-[#128c7e] transition hover:bg-[#25d366]/20"
                       >
                         <MessageCircle className="h-4 w-4 shrink-0" />
                         WhatsApp
-                      </Link>
+                      </TrackedLink>
                     </div>
                   </div>
                 </div>

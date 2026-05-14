@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Clock3, Mail, MapPin, Phone } from "lucide-react";
+import { TrackedLink } from "@/components/tracked-link";
 import { dentalThemeVars } from "@/constants/theme";
 import { homePageContent } from "@/features/home/data";
 import { BackToTopButton } from "@/components/layout/back-to-top-button";
@@ -153,32 +154,38 @@ export function Footer() {
             <ul className="mt-2 grid gap-1.5 text-sm text-white/80">
               {phoneNumbers.map((phone) => (
                 <li key={phone}>
-                  <Link
+                  <TrackedLink
                     href={`tel:${phone.replace(/[^\d+]/g, "")}`}
+                    clarityEvent="phone_click"
+                    clarityLocation="footer"
                     className="transition hover:text-[var(--color-accent)]"
                   >
                     {phone}
-                  </Link>
+                  </TrackedLink>
                 </li>
               ))}
             </ul>
 
             <div className="mt-5 hidden items-center gap-2 md:flex">
               {emailLink ? (
-                <Link
+                <TrackedLink
                   href={emailLink.href}
                   aria-label="Email us"
+                  clarityEvent="email_click"
+                  clarityLocation="footer"
                   className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-accent)]/15 text-[var(--color-accent)] transition hover:bg-[var(--color-accent)] hover:text-white"
                 >
                   <Mail className="h-4 w-4" />
-                </Link>
+                </TrackedLink>
               ) : null}
               {facebookLink ? (
-                <Link
+                <TrackedLink
                   href={facebookLink.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
+                  clarityEvent="facebook_click"
+                  clarityLocation="footer"
                   className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-accent)]/15 text-[var(--color-accent)] transition hover:bg-[var(--color-accent)] hover:text-white"
                 >
                   <svg
@@ -188,13 +195,15 @@ export function Footer() {
                   >
                     <path d="M13.5 22v-8h2.7l.4-3h-3.1V9c0-.9.3-1.5 1.6-1.5h1.7V4.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H8V14h2.6v8h2.9Z" />
                   </svg>
-                </Link>
+                </TrackedLink>
               ) : null}
-              <Link
+              <TrackedLink
                 href="https://wa.me/918595389394"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
+                clarityEvent="whatsapp_click"
+                clarityLocation="footer"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-accent)]/15 text-[var(--color-accent)] transition hover:bg-[var(--color-accent)] hover:text-white"
               >
                 <svg
@@ -204,15 +213,17 @@ export function Footer() {
                 >
                   <path d="M20.5 3.5A11.7 11.7 0 0 0 12.1 0C5.6 0 .3 5.2.3 11.7c0 2 .5 4 1.5 5.7L0 24l6.8-1.8a11.7 11.7 0 0 0 5.3 1.3h0c6.5 0 11.7-5.2 11.7-11.7 0-3.1-1.2-6-3.3-8.3Zm-8.4 18c-1.7 0-3.3-.4-4.8-1.2l-.3-.2-4 .9 1-3.9-.2-.3a9.5 9.5 0 1 1 8.3 4.7Zm5.2-7.1c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1l-.9 1.1c-.2.2-.3.2-.5.1-1.4-.7-2.5-1.6-3.5-2.9-.2-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.1.1-.3 0-.5 0-.1-.6-1.5-.9-2.1-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9.6.3 1.1.5 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.5-.3Z" />
                 </svg>
-              </Link>
+              </TrackedLink>
             </div>
 
-            <Link
+            <TrackedLink
               href="/contact-us"
+              clarityEvent="book_appointment_click"
+              clarityLocation="footer"
               className="mt-5 hidden items-center gap-2 border border-[var(--color-accent-border)] bg-[var(--color-accent-soft)] px-5 py-2.5 text-xs font-semibold tracking-[0.12em] text-[var(--color-accent)] uppercase transition hover:border-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white md:inline-flex"
             >
               Book an Appointment
-            </Link>
+            </TrackedLink>
           </div>
 
           {/* Socials (mobile only) */}
@@ -222,20 +233,24 @@ export function Footer() {
             </h4>
             <div className="mt-4 flex items-center gap-2">
               {emailLink ? (
-                <Link
+                <TrackedLink
                   href={emailLink.href}
                   aria-label="Email us"
+                  clarityEvent="email_click"
+                  clarityLocation="footer"
                   className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-accent)]/15 text-[var(--color-accent)] transition hover:bg-[var(--color-accent)] hover:text-white"
                 >
                   <Mail className="h-4 w-4" />
-                </Link>
+                </TrackedLink>
               ) : null}
               {facebookLink ? (
-                <Link
+                <TrackedLink
                   href={facebookLink.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
+                  clarityEvent="facebook_click"
+                  clarityLocation="footer"
                   className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-accent)]/15 text-[var(--color-accent)] transition hover:bg-[var(--color-accent)] hover:text-white"
                 >
                   <svg
@@ -245,13 +260,15 @@ export function Footer() {
                   >
                     <path d="M13.5 22v-8h2.7l.4-3h-3.1V9c0-.9.3-1.5 1.6-1.5h1.7V4.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H8V14h2.6v8h2.9Z" />
                   </svg>
-                </Link>
+                </TrackedLink>
               ) : null}
-              <Link
+              <TrackedLink
                 href="https://wa.me/918595389394"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
+                clarityEvent="whatsapp_click"
+                clarityLocation="footer"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-accent)]/15 text-[var(--color-accent)] transition hover:bg-[var(--color-accent)] hover:text-white"
               >
                 <svg
@@ -261,7 +278,7 @@ export function Footer() {
                 >
                   <path d="M20.5 3.5A11.7 11.7 0 0 0 12.1 0C5.6 0 .3 5.2.3 11.7c0 2 .5 4 1.5 5.7L0 24l6.8-1.8a11.7 11.7 0 0 0 5.3 1.3h0c6.5 0 11.7-5.2 11.7-11.7 0-3.1-1.2-6-3.3-8.3Zm-8.4 18c-1.7 0-3.3-.4-4.8-1.2l-.3-.2-4 .9 1-3.9-.2-.3a9.5 9.5 0 1 1 8.3 4.7Zm5.2-7.1c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1l-.9 1.1c-.2.2-.3.2-.5.1-1.4-.7-2.5-1.6-3.5-2.9-.2-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.1.1-.3 0-.5 0-.1-.6-1.5-.9-2.1-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.8 4.4 3.9.6.3 1.1.5 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.5-.3Z" />
                 </svg>
-              </Link>
+              </TrackedLink>
             </div>
           </div>
         </div>

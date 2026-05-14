@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { ArrowRight, Check, Copy, MapPin, MessageCircle, Phone } from "lucide-react";
+import { TrackedLink } from "@/components/tracked-link";
+import { trackClarityClick } from "@/lib/clarity";
 import { dentalThemeVars } from "@/constants/theme";
 
 const primaryPhoneNumber = "+91 8595389394";
@@ -18,6 +19,7 @@ export function ConsultationCtaSection() {
     try {
       await navigator.clipboard.writeText(address);
       setCopied(true);
+      trackClarityClick("copy_address_click", "consultation_cta");
       setTimeout(() => setCopied(false), 1500);
     } catch {
       setCopied(false);
@@ -44,22 +46,26 @@ export function ConsultationCtaSection() {
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link
+              <TrackedLink
                 href={`https://wa.me/${whatsappPhoneNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                clarityEvent="whatsapp_click"
+                clarityLocation="consultation_cta"
                 className="inline-flex items-center gap-2 border border-[#25d366]/30 bg-[#25d366]/10 px-5 py-3 text-sm font-semibold text-[#128c7e] transition hover:bg-[#25d366]/20"
               >
                 <MessageCircle className="h-4 w-4" />
                 WhatsApp Now
-              </Link>
-              <Link
+              </TrackedLink>
+              <TrackedLink
                 href={`tel:${primaryPhoneNumber.replace(/[^\d+]/g, "")}`}
+                clarityEvent="phone_click"
+                clarityLocation="consultation_cta"
                 className="inline-flex items-center gap-2 border border-[var(--color-accent-border)] bg-white px-5 py-3 text-sm font-semibold text-[var(--color-heading)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
               >
                 <Phone className="h-4 w-4" />
                 Call {primaryPhoneNumber}
-              </Link>
+              </TrackedLink>
             </div>
 
             <div className="mt-5 flex items-start gap-2 text-sm text-[var(--color-muted)]">
@@ -76,15 +82,17 @@ export function ConsultationCtaSection() {
               </button>
             </div>
 
-            <Link
+            <TrackedLink
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery)}`}
               target="_blank"
               rel="noopener noreferrer"
+              clarityEvent="maps_click"
+              clarityLocation="consultation_cta"
               className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-accent)] transition hover:text-[var(--color-accent-hover)]"
             >
               Open in Google Maps
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </TrackedLink>
           </article>
 
           <article className="overflow-hidden rounded-3xl border border-[var(--color-border-soft)] bg-white">
