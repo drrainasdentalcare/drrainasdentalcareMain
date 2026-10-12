@@ -6,16 +6,15 @@ import { TopBar } from "@/components/layout/top-bar";
 import { AboutPreviewSection } from "@/components/sections/about";
 import { HeroSection } from "@/components/sections/hero";
 import { ConsultationCtaSection } from "@/components/sections/consultation-cta";
+import { GoogleReviewsSection } from "@/components/sections/google-reviews";
 import { OurSpecialistsSection } from "@/components/sections/our-specialists";
 import { PhotoGallerySection } from "@/components/sections/photo-gallery";
 import { ServicesSection } from "@/components/sections/services";
-import { TestimonialsSection } from "@/components/sections/testimonials";
 import { WhyChooseUsSection } from "@/components/sections/why-choose-us";
 import { getAboutSection } from "@/src/sanity/queries/about";
 import { getGallerySection } from "@/src/sanity/queries/gallery";
 import { getServicesSection } from "@/src/sanity/queries/services";
 import { getSpecialistsSection } from "@/src/sanity/queries/specialists";
-import { getTestimonialsSection } from "@/src/sanity/queries/testimonials";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://drrainadentalcare.com";
 
@@ -40,7 +39,6 @@ export default async function Home() {
   const gallerySection = await getGallerySection();
   const servicesSection = await getServicesSection();
   const specialistsSection = await getSpecialistsSection();
-  const testimonialsSection = await getTestimonialsSection();
 
   return (
     <>
@@ -75,7 +73,7 @@ export default async function Home() {
         <WhyChooseUsSection />
         <OurSpecialistsSection cmsData={specialistsSection} />
         <PhotoGallerySection cmsData={gallerySection} />
-        <TestimonialsSection cmsData={testimonialsSection} />
+        <GoogleReviewsSection />
         <ConsultationCtaSection />
       </main>
       <Footer />
